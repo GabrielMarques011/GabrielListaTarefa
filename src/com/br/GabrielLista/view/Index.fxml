@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="588.0" prefWidth="814.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.br.GabrielLista.controller.IndexController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="588.0" layoutX="4.0" layoutY="18.0" stroke="#8f434300" strokeType="INSIDE" width="814.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <fill>
+            <LinearGradient endX="0.6333333333333334" endY="0.23333333333333334" startX="0.8809523809523809" startY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="WHITE" offset="0.007662835249042145" />
+                  <Stop color="#3f3f3f" offset="0.5747126436781604" />
+                  <Stop color="#3f3f3f" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <MenuBar layoutX="182.0" layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <DatePicker layoutX="14.0" layoutY="122.0" prefHeight="25.0" prefWidth="197.0" />
+      <Label layoutX="15.0" layoutY="95.0" prefHeight="27.0" prefWidth="197.0" text="Data para realização:" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font></Label>
+      <Label layoutX="14.0" layoutY="153.0" prefHeight="17.0" prefWidth="174.0" text="Tarefa:" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font></Label>
+      <Label layoutX="15.0" layoutY="213.0" prefHeight="17.0" prefWidth="174.0" text="Status:" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font></Label>
+      <Label layoutX="15.0" layoutY="281.0" prefHeight="19.0" prefWidth="174.0" text="Comentários:" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font></Label>
+      <TextField fx:id="fxTarefa" layoutX="15.0" layoutY="180.0" prefHeight="25.0" prefWidth="391.0" text="Digite..." AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="408.0" />
+      <TextField fx:id="fxStatus" layoutX="15.0" layoutY="240.0" prefHeight="25.0" prefWidth="197.0" />
+      <TextArea fx:id="fxComentario" layoutX="15.0" layoutY="308.0" prefHeight="161.0" prefWidth="391.0" text="Digite um comentário..." AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="408.0" />
+      <Button fx:id="fxSalvar" layoutX="15.0" layoutY="514.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="67.0" />
+      <Button fx:id="fxCalendario" layoutX="95.0" layoutY="514.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="67.0" />
+      <Button fx:id="fxLista" layoutX="178.0" layoutY="514.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="67.0" />
+      <Button fx:id="fxLixo" layoutX="256.0" layoutY="514.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="67.0" />
+      <Button fx:id="fxBorracha" layoutX="338.0" layoutY="515.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="67.0" />
+      <ImageView fitHeight="53.0" fitWidth="59.0" layoutX="22.0" layoutY="518.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagens/salvar-arquivo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="53.0" fitWidth="59.0" layoutX="102.0" layoutY="518.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagens/calendario.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="53.0" fitWidth="59.0" layoutX="185.0" layoutY="518.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagens/lista-de-controle.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="53.0" fitWidth="59.0" layoutX="263.0" layoutY="518.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagens/lixeira.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="53.0" fitWidth="59.0" layoutX="345.0" layoutY="519.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagens/borracha.png" />
+         </image>
+      </ImageView>
+      <Line endX="401.0" layoutX="400.0" layoutY="84.0" startX="-388.0" stroke="WHITE" strokeWidth="3.0" />
+      <Text fill="WHITE" layoutX="204.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="G||M Lista de Tarefas" textAlignment="CENTER">
+         <font>
+            <Font name="OCR A Extended" size="32.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
