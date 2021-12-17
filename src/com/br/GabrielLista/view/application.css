@@ -1,1 +1,7 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.table-row-cell:selected{
+	-fx-background-color: #D5FAF6;
+	}
+
+.table-row-cell:selected .text{
+	-fx-fill: black;
+}

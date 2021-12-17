@@ -6,12 +6,15 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+import com.br.GabrielLista.model.StatusTarefa;
 import com.br.GabrielLista.model.Tarefa;
-import com.sun.xml.internal.stream.util.BufferAllocator;
 
 public class TarefaIO {
 
@@ -71,12 +74,55 @@ public class TarefaIO {
 		
 	}
 	
-	public static List<Tarefa> readTarefa() throws FileNotFoundException {
+	public static List<Tarefa> readTarefa() throws IOException {
 		File arqTarefas = new File(FILE_TAREFA);
 		List<Tarefa> tarefas = new ArrayList<Tarefa>();
 		FileReader reader = new FileReader(arqTarefas);//ARQUIVO QUE SERVE PARA LER
 		BufferedReader buff = new BufferedReader(reader);//ELE GUARDA EM QUANTO VAI LENDO
-		return null;
+		
+		String linha;//ESTE METODO IRA LER CADA METODO DE UMA LINHA;
+		
+		while((linha = buff.readLine()) != null) {//FAZENDO ELE VER SE TEM LINHAS, CASO TENHA ELE IRA LER ATE A ULTIMA
+			
+			String[] vetor = linha.split(";");
+			
+			System.out.println(linha);
+			
+			//CRIANDO UMA TAREFA
+			Tarefa t = new Tarefa();
+			t.setId(Long.parseLong(vetor[0]));//DETERMINANDO O PRIMEIRO VETOR (ID)
+			
+			DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			
+			//DETERMINANDO O ID NO COD
+			t.setCod(vetor[0]);//AQUI
+			
+			t.setDataCriacao(LocalDate.parse(vetor[1], fmt));//DETERMINANDO O SEGUNDO VETOR (DATA DE CRIAÇÃO)
+			
+			t.setDataLimite(LocalDate.parse(vetor[2], fmt));//DETERMINANDO O TERCEIRO VETOR (DATA LIMITE)
+			
+			if(!vetor[3].isEmpty()) {//DETERMINANDO O QUARTO VETOR (DATA FINALIZADA)
+				t.setDataFinalizada(LocalDate.parse(vetor[3], fmt));
+			}
+			
+			t.setDescricao(vetor[4]);//DETERMINANDO O QUINTO VETOR (DESCRIÇÃO)
+			
+			t.setComentario(vetor[5]);//DETERMINANDO O SEXTO VETOR (COMENTARIO)
+			
+			//DETERMINANDO O SETIMO VETOR (STATUS)
+			int indStatus = Integer.parseInt(vetor[6]);//CONVERTENDO STRING PARA NUM INTEIRO
+			t.setStatus(StatusTarefa.values()[indStatus]);
+			
+			tarefas.add(t);//ADICIONANDO OS ARQUIVOS NA LISTA DE TAREFAS
+		}
+		
+		buff.close();
+		reader.close();
+		Collections.sort(tarefas);
+		
+		System.out.println(tarefas.size());
+		
+		return tarefas;
 	}
 	
 	public static String getFolder() {
@@ -90,6 +136,38 @@ public class TarefaIO {
 	public static String getFileTarefa() {
 		return FILE_TAREFA;
 	}	
-
+	
+	
+	public static void attTarefas (List<Tarefa> tarefas) throws IOException {
+		File arqTarefas = new File(FILE_TAREFA);
+		FileWriter writer = new FileWriter(arqTarefas);
+		
+		for(Tarefa t: tarefas) {
+			writer.append(t.formatToSave());
+		}
+		writer.close();
+	}
+	
+	
+	public static void exportHtml(List<Tarefa> lista, File arquivos) throws IOException {
+		FileWriter writer = new FileWriter(arquivos);
+		writer.append("<!DOCTYPE html>\n");
+		writer.append("<html>\n");
+		writer.append("<body>\n");
+		writer.append("<h1>Lista de Tarefas</h1>\n");
+		writer.append("<ul>\n");
+		
+		for (Tarefa tarefa : lista) {
+			writer.append("<li>\n");
+			writer.append(tarefa.getDescricao() + " - " +tarefa.getDataLimite() + " - " +tarefa.getStatus());
+			writer.append("</li>\n");
+		}
+		
+		writer.append("</ul>\n");
+		writer.append("</body>\n");
+		writer.append("</html>\n");
+		writer.close();
+	}
+	
 	
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.br.GabrielLista.controller.AboutController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../../../../bin/com/br/GabrielLista/imagens/Fundo3.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="92.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gabriel Marques - 18y" />
+      <Text fill="WHITE" layoutX="92.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="✎ Desenvolvedor" />
+      <TextArea editable="false" layoutX="15.0" layoutY="128.0" prefHeight="178.0" prefWidth="372.0" style="-fx-background-color: white;" text="Olá sou o Gabriel, criador dessa lista de Tarefas.&#10;&#10;Está Lista foi desenvolvida em sala de aula, juntamente&#10;com o professor Chile. A ideia foi criar uma lista que&#10;organizasse as atividades do dia a dia, com Comentarios,&#10;Descrição e diversas coisas.&#10;&#10;Criamos uma simulação de banco de dados no exel , que&#10;serviu para guardar todas as tarefas salvas. Organizadas&#10;em ordem Alfabetica e cada Tarefa contem seu proprio ID." wrapText="true" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="13.0" />
+      <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../bin/com/br/GabrielLista/imagens/Foto%20de%20Fundo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btOk" layoutX="156.0" layoutY="336.0" mnemonicParsing="false" onAction="#btOkClick" prefHeight="39.0" prefWidth="89.0" style="-fx-border-color: gray; -fx-background-color: black; -fx-text-fill: white;" text="OK" textAlignment="CENTER" />
+      <ImageView fitHeight="100.0" fitWidth="150.0" layoutX="236.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../bin/com/br/GabrielLista/imagens/senai-logo.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

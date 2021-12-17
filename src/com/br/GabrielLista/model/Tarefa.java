@@ -3,16 +3,15 @@ package com.br.GabrielLista.model;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Tarefa {
-	private long id;
-	private LocalDate dataCriacao;
-	private LocalDate dataLimite;
-	private LocalDate dataFinalizada;
-	private String descricao;
-	private String comentario;
-	private StatusTarefa status;//CHAMANDO O STATUS DA TAREFA
-	private ChoiceClass Estado;//CHAMANDO O CHOICE DO ESTADO
+public class Tarefa implements Comparable<Tarefa> {
 	
+	private long id;
+	
+	private LocalDate dataCriacao, dataLimite, dataFinalizada;
+	
+	private String descricao, comentario, cod;//CRIEI O COD AQUI NA TAREFA
+	
+	private StatusTarefa status;//CHAMANDO O STATUS DA TAREFA
 	
 	public long getId() {
 		return id;
@@ -71,16 +70,6 @@ public class Tarefa {
 		this.status = status;
 	}
 	
-	public ChoiceClass getEstado() {
-		
-		return Estado;
-	}
-
-	public void setEstado(ChoiceClass estado) {
-		
-		Estado = estado;
-	}
-	
 	public String formatToSave() {
 		StringBuilder builder = new StringBuilder();
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");//FORMATADOR DE DATA
@@ -96,10 +85,32 @@ public class Tarefa {
 		//APLICANDO PARA SALVAR
 		builder.append(";");
 		builder.append(this.getDescricao()+";");
-		//builder.append(this.getEstado().ordinal()+";");
 		builder.append(this.getComentario()+";");
 		builder.append(this.getStatus().ordinal()+"\n");//\N PARA QUEBRAR A PROXIMA TAREFA PARA BAIXO
 		return builder.toString();
+	}
+
+	
+	//DETERMINANDO OS GET E SET DO COD (FXCOD)
+	//AQUI
+	
+	public String getCod() {
+		return cod;
+	}
+
+	public void setCod(String cod) {
+		this.cod = cod;
+	}
+
+	@Override
+	public int compareTo(Tarefa o) {
+		if(this.getDataLimite().isBefore(o.getDataLimite())) {
+			return -1;
+		}else if(this.getDataLimite().isAfter(o.getDataLimite())){
+			return 1;
+		}else {
+			return this.getDescricao().compareTo(o.getDescricao());	
+		}
 	}
 
 	
